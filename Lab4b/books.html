@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Information</title>
+</head>
+<body>
+
+    <h1>Book Information</h1>
+
+    <h2>First Book Title</h2>
+    <p id="firstTitle"></p>
+
+    <h2>Second Book Author</h2>
+    <p id="secondAuthor"></p>
+
+    <h2>Genres by Book</h2>
+    <ul id="genres"></ul>
+
+    <p id="error" role="alert"></p>
+
+    <script>
+        async function loadBooks() {
+            try {
+                const response = await fetch("books.json");
+
+                if (!response.ok) {
+                    throw new Error("Failed to load JSON");
+                }
+
+                const data = await response.json();
+
+                const book1 = data.books[0];
+                const book2 = data.books[1];
+
+                document.getElementById("firstTitle").textContent =
+                    book1.title;
+
+                document.getElementById("secondAuthor").textContent =
+                    book2.author;
+
+                const genreList = document.getElementById("genres");
+
+                for (const book of data.books) {
+                    const item = document.createElement("li");
+
+                    item.textContent =
+                        book.title + " — " + book.genres.join(", ");
+
+                    genreList.appendChild(item);
+                }
+
+            } catch (error) {
+                document.getElementById("error").textContent =
+                    "Sorry, the book information could not be loaded.";
+            }
+        }
+
+        loadBooks();
+    </script>
+
+</body>
+</html>

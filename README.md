@@ -1,8 +1,8 @@
-# BIC21203 Web Development – Lab 4b
+# BIC21203 - Lab 4b: JSON and JQuery
 
-**Topic:** JSON and jQuery  
 **Name:** MUHAMMAD FAHIM BIN ZAINUDDIN  
-**Matric Number:** AI250201
+**Matric Number:** AI250201  
+**Course:** BIC21203 Web Development
 
 ## About This Lab
 
